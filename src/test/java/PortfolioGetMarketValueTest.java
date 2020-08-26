@@ -2,6 +2,9 @@ import dataModels.Stock;
 import org.junit.Before;
 import org.junit.Test;
 import application.Portfolio;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import services.StockService;
 
 import java.util.ArrayList;
@@ -11,7 +14,9 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PortfolioGetMarketValueTest {
+    @Mock
     private StockService service;
     private Portfolio portfolio;
     private Stock googleStock;
@@ -19,14 +24,14 @@ public class PortfolioGetMarketValueTest {
     @Before
     public void setup()
     {
-        service = mock(StockService.class);
+        //service = mock(StockService.class);
         portfolio = new Portfolio(service);
         List<Stock> stocks = new ArrayList<Stock>();
         googleStock = new Stock("1","Google",10);
         stocks.add(googleStock);
         msStock = new Stock("2","Microsoft",20);
         stocks.add(msStock);
-        portfolio.setStocks(stocks);
+        portfolio.setMyStocks(stocks);
     }
 
     @Test
@@ -38,13 +43,13 @@ public class PortfolioGetMarketValueTest {
     @Test
     public void testStockListNotNull()
     {
-        assertEquals(portfolio.getStocks().isEmpty(),false);
+        assertEquals(portfolio.getMyStocks().isEmpty(),false);
     }
 
     @Test
     public void testStockAt0()
     {
-        assertEquals(portfolio.getStocks().get(0),googleStock);
+        assertEquals(portfolio.getMyStocks().get(0),googleStock);
     }
 
     @Test
@@ -58,7 +63,7 @@ public class PortfolioGetMarketValueTest {
     {
         when(service.getPrice(googleStock))
                 .thenReturn(50);
-        assertEquals(portfolio.getStockMarketValue(portfolio.getStocks().get(0)),
+        assertEquals(portfolio.getStockMarketValue(portfolio.getMyStocks().get(0)),
                 500);
     }
 }
