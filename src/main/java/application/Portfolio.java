@@ -20,4 +20,13 @@ public class Portfolio {
     {
         return stock.getQuantity()*service.getPrice(stock);
     }
+
+    public void printAvailableStocks()
+    {
+        List<Stock> availableStocks = service.getAvailableStocks();
+        if(availableStocks.equals(null)||availableStocks.isEmpty())
+            System.out.println("Stocks are not available. Please Try again later.");
+        else
+            availableStocks.forEach((stock)-> System.out.println("* "+stock+" *"));
+    }
 }

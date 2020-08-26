@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class PortfolioTest {
+public class PortfolioGetMarketValueTest {
     private StockService service;
     private Portfolio portfolio;
     private Stock googleStock;
