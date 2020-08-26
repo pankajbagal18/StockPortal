@@ -1,7 +1,7 @@
 import dataModels.Stock;
 import org.junit.Before;
 import org.junit.Test;
-import services.Portfolio;
+import application.Portfolio;
 import services.StockService;
 
 import java.util.ArrayList;

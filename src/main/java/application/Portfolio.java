@@ -1,9 +1,14 @@
-package services;
+package application;
 
 import dataModels.Stock;
+import lombok.Getter;
+import lombok.Setter;
+import services.StockService;
 
 import java.util.List;
 
+@Getter
+@Setter
 public class Portfolio {
     private List<Stock> stocks;
     private StockService service;
@@ -11,24 +16,6 @@ public class Portfolio {
     {
         this.service = service;
     }
-
-    public List<Stock> getStocks()
-    {
-        return stocks;
-    }
-
-    public void setStocks(List<Stock> stocks) {
-        this.stocks = stocks;
-    }
-
-    public StockService getService() {
-        return service;
-    }
-
-    public void setService(StockService service) {
-        this.service = service;
-    }
-
     public int getStockMarketValue(Stock stock)
     {
         return stock.getQuantity()*service.getPrice(stock);
