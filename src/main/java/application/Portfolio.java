@@ -26,7 +26,7 @@ public class Portfolio {
     public void printAvailableStocks()
     {
         List<Stock> availableStocks = service.getAvailableStocks();
-        if(availableStocks.equals(null)||availableStocks.isEmpty())
+        if(availableStocks == null ||availableStocks.isEmpty())
             System.out.println("Stocks are not available. Please Try again later.");
         else
             availableStocks.forEach((stock)-> System.out.println("* "+stock+" *"));
@@ -39,7 +39,7 @@ public class Portfolio {
 
     public Stock suggestOptimalStock() {
         List<Stock> availableStocks = service.getAvailableStocks();
-        if (availableStocks.equals(null) || availableStocks.isEmpty())
+        if (availableStocks == null || availableStocks.isEmpty())
             throw new NoStocksAvailable();
         else
         {
@@ -54,7 +54,7 @@ public class Portfolio {
                     optimalPrice = qty*price;
                 }
             }
-            if(optimalStock.equals(null)||optimalPrice==0)
+            if(optimalStock==null || optimalPrice==0)
             {
                 throw new NoOptimalStockFound();
             }

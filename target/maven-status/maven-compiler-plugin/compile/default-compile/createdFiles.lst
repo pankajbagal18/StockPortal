@@ -1,0 +1,7 @@
+dataModels\Stock.class
+Exceptions\NoStocksAvailable.class
+application\PortfolioRunner.class
+Exceptions\NoOptimalStockFound.class
+services\StockService.class
+application\Portfolio.class
+dataModels\Investor.class
