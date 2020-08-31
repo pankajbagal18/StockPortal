@@ -2,6 +2,7 @@ package application;
 
 import Exceptions.NoOptimalStockFound;
 import Exceptions.NoStocksAvailable;
+import dataModels.Investor;
 import dataModels.Stock;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,10 +33,12 @@ public class Portfolio {
             availableStocks.forEach((stock)-> System.out.println("* "+stock+" *"));
     }
 
-//    Criteria for optimal stock :
-//    stock quantity less than 10 and price less than 100
-//    if multiple such stocks are available
-//    then select stock with max(qty*price)
+/*
+    Criteria for optimal stock :
+    stock quantity less than 10 and price less than 100
+    if multiple such stocks are available
+    then select stock with max(qty*price)
+*/
 
     public Stock suggestOptimalStock() {
         List<Stock> availableStocks = service.getAvailableStocks();
@@ -61,5 +64,15 @@ public class Portfolio {
             else
                 return optimalStock;
         }
+    }
+
+    /**
+     * Method to buy new stock
+     * Criteria to buy new stock is Investor.balance>=stock.marketValue + broker.fee + deposit
+     *
+     * */
+    public void buyStock(Stock stock, Investor investor)
+    {
+
     }
 }
